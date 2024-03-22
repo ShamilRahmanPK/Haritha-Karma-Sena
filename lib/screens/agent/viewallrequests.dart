@@ -24,7 +24,7 @@ var id;
     return Scaffold(
       appBar: AppBar(
         title: Text("Requests"),
-        backgroundColor: primaryColor,
+        backgroundColor: secondaryColor,
       ),
       body: Container(
         padding: EdgeInsets.only(left: 20, right: 20, top: 20),

@@ -15,7 +15,7 @@ class _ViewscomplaintState extends State<Viewscomplaint> {
     return Scaffold(
       appBar: AppBar(
         title: Text("service complaints"),
-        backgroundColor: Colors.teal,
+        backgroundColor: Color(0xff006937),
       ),
       body: SafeArea(
           child: Container(

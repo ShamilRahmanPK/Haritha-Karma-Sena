@@ -16,7 +16,7 @@ class _ViewAgentState extends State<ViewAgent> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Agents"),
-        backgroundColor: Colors.teal,
+        backgroundColor: Color(0xff006937),
       ),
       body: SafeArea(
           child: Container(

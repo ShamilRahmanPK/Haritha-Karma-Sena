@@ -29,7 +29,7 @@ class _AssignCarterState extends State<AssignCarter> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: primaryColor,
+          backgroundColor: Color(0xff006937),
         title: Text("Assign carters"),
       ),
       body:Container(
@@ -41,27 +41,7 @@ class _AssignCarterState extends State<AssignCarter> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text('Assign Carter'),
-            // DropdownButtonFormField(
-            //   items: ward.map((String ward) {
-            //     return new DropdownMenuItem<String>(
-            //         value: ward,
-            //         child: Row(
-            //           children: <Widget>[
-            //             Text(ward),
-            //           ],
-            //         ));
-            //   }).toList(),
-            //   onChanged: (String?newValue) {
-            //     // do other stuff with _category
-            //     setState(() => _ward = newValue);
-            //   },
-            //   value: _ward,
-            //   decoration: const InputDecoration(
-            //       enabledBorder: OutlineInputBorder(),
-            //       focusedBorder: OutlineInputBorder(
-            //           borderSide: BorderSide(color: Colors.teal, width: 3)),
-            //       hintText: 'Ward'),
-            // ),
+
 
             Padding(
               padding: const EdgeInsets.only(
@@ -155,11 +135,12 @@ class _AssignCarterState extends State<AssignCarter> {
                   width: 150,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
-                    color:primaryColor
+                    color:Color(0xff006937)
 
                   ),
                   child: Center(
                     child: AppText(
+                      size: 16,
                       color: Colors.white,
                       text: 'Assign',
                     ),

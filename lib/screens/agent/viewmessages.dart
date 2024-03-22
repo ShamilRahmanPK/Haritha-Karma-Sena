@@ -16,7 +16,7 @@ class _MessageViewState extends State<MessageView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: primaryColor,
+        backgroundColor: secondaryColor,
         title: Text("Messages"),
       ),
       body: SafeArea(

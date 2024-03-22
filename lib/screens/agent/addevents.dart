@@ -9,14 +9,13 @@ import 'package:image_picker/image_picker.dart';
 
 import 'package:uuid/uuid.dart';
 
-
-
 class CreateEvent extends StatefulWidget {
-  String?reqFrom;
-  String?id;
-  String?name;
+  String? reqFrom;
+  String? id;
+  String? name;
 
-  CreateEvent({Key? key,this.reqFrom='admin',this.id,this.name}) : super(key: key);
+  CreateEvent({Key? key, this.reqFrom = 'admin', this.id, this.name})
+      : super(key: key);
 
   @override
   State<CreateEvent> createState() => _CreateEventState();
@@ -35,29 +34,26 @@ class _CreateEventState extends State<CreateEvent> {
   final _addkey = GlobalKey<FormState>();
   var imageurl;
 
-  var uuid=Uuid();
+  var uuid = Uuid();
   var _addid;
 
-  String?_store;
+  String? _store;
   var _query;
 
   // List<String> category = ["Offers", "Prebook"];
   // String? _selectedCategory;
 
-
-
-
-
   @override
-  initState(){
-    _addid=uuid.v1();
+  initState() {
+    _addid = uuid.v1();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: primaryColor,
+        backgroundColor: secondaryColor,
         elevation: 0.0,
         title: Text(""
             "Create Add"),
@@ -88,10 +84,7 @@ class _CreateEventState extends State<CreateEvent> {
                       return "Enter a Valid Title";
                     }
                   },
-
-                  decoration: InputDecoration(
-
-                      hintText: "Title"),
+                  decoration: InputDecoration(hintText: "Title"),
                 ),
                 SizedBox(
                   height: 20,
@@ -103,10 +96,7 @@ class _CreateEventState extends State<CreateEvent> {
                       return "Enter a Valid Description";
                     }
                   },
-
-                  decoration: InputDecoration(
-
-                      hintText: "Description"),
+                  decoration: InputDecoration(hintText: "Description"),
                 ),
                 SizedBox(
                   height: 20,
@@ -117,81 +107,47 @@ class _CreateEventState extends State<CreateEvent> {
                   },
                   child: Container(
                     decoration: BoxDecoration(
-                        border: Border.all(
-                            color: Colors.black87
-                        )
-                    ),
+                        border: Border.all(color: Colors.black87)),
                     height: 150,
 
                     //color: Colors.transparent,
                     child: _image != null
                         ? ClipRRect(
-                        child: Image.file(
-                          File(_image!.path),
-                          fit: BoxFit.cover,
-                        ))
+                            child: Image.file(
+                            File(_image!.path),
+                            fit: BoxFit.cover,
+                          ))
                         : Container(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          // CircleAvatar(
-                          //   radius: 45.0,
-                          //   backgroundImage: NetworkImage(widget.imgurl),
-                          //   backgroundColor: Colors.transparent,
-                          // ),
-
-                          Icon(
-                            Icons.upload_file,
-                            size: 20,
-                            color: Colors.black,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  Icons.upload_file,
+                                  size: 20,
+                                  color: Colors.black,
+                                ),
+                              ],
+                            ),
                           ),
-                        ],
-                      ),
-                    ),
                   ),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
-                // DropdownButtonFormField<String>(
-                //   style: TextStyle(color: Colors.black87),
-                //   //dropdownColor: primaryColor,
-                //   decoration: InputDecoration(
-                //
-                //       hintText: "Select Category"),
-                //   items: category.map((String value) {
-                //     return DropdownMenuItem<String>(
-                //       value: value,
-                //       child: Text(value),
-                //     );
-                //   }).toList(),
-                //   onChanged: (String? newValue) {
-                //     _selectedCategory = newValue;
-                //   },
-                // ),
-
-
-                SizedBox(
-                  height: 20,
-                ),
-
                 Container(
-
                   child: StreamBuilder<QuerySnapshot>(
                     stream: FirebaseFirestore.instance
                         .collection('stores')
-
                         .snapshots(),
                     builder: (context, snapshot) {
                       if (!snapshot.hasData) {
                         return SizedBox.shrink();
                       }
 
-                      if (snapshot.hasData &&
-                          snapshot.data!.docs.length == 0) {
+                      if (snapshot.hasData && snapshot.data!.docs.length == 0) {
                         return SizedBox.shrink();
                       }
-                      if(snapshot.hasData && snapshot.data!.docs.length!=0){
+                      if (snapshot.hasData && snapshot.data!.docs.length != 0) {
                         return Column(
                           children: [
                             DropdownButtonFormField<String>(
@@ -200,22 +156,19 @@ class _CreateEventState extends State<CreateEvent> {
                                   Icons.arrow_drop_down,
                                   color: Colors.black,
                                 ),
-                                decoration: InputDecoration(
-
-                                    hintText: "Select Store"),
+                                decoration:
+                                    InputDecoration(hintText: "Select Store"),
                                 onChanged: (value) => setState(() {
-                                  _store = value;
-                                  print(_store.toString());
-                                }),
-                                validator: (value) => value == null
-                                    ? 'field required'
-                                    : null,
+                                      _store = value;
+                                      print(_store.toString());
+                                    }),
+                                validator: (value) =>
+                                    value == null ? 'field required' : null,
                                 items: snapshot.data!.docs
                                     .map((DocumentSnapshot document) {
                                   return DropdownMenuItem<String>(
                                       value: document['storeid'],
-                                      child: Text(
-                                          '${document['storename']}'));
+                                      child: Text('${document['storename']}'));
                                 }).toList()),
                           ],
                         );
@@ -225,62 +178,54 @@ class _CreateEventState extends State<CreateEvent> {
                     },
                   ),
                 ),
-                SizedBox(height:20),
-
-
-
-
-                SizedBox(
-                  height: 20,
-                ),
+                SizedBox(height: 20),
                 Center(
-                 child: InkWell(
+                  child: InkWell(
+                    onTap: () {
+                      if (_addkey.currentState!.validate()) {
+                        print("helo");
+                        String fileName = DateTime.now().toString();
+                        var ref = FirebaseStorage.instance
+                            .ref()
+                            .child("events/$fileName");
+                        UploadTask uploadTask = ref.putFile(File(_image!.path));
 
-                     onTap: () {
-                       if (_addkey.currentState!.validate()) {
-                         print("helo");
-                         String fileName = DateTime.now().toString();
-                         var ref =
-                         FirebaseStorage.instance.ref().child("events/$fileName");
-                         UploadTask uploadTask = ref.putFile(File(_image!.path));
-
-                         uploadTask.then((res) async {
-                           imageurl = (await ref.getDownloadURL()).toString();
-                         }).then((value) {
-                           FirebaseFirestore.instance
-                               .collection('events')
-                               .doc(_addid)
-                               .set({
-                             'addid': _addid,
-                             'title': titleController.text,
-                             'description': descriptionController.text,
-                             'imgurl': imageurl,
-
-                             'agentid':widget.id,
-                             'agentname':widget.name,
-                             'status': 1,
-
-                             'createdAt': DateTime.now(),
-
-                             'delstatus':0,
-
-                           }).then((value) {
-
-
-                             Navigator.pop(context);
-                           });
-                         });
-                       }
-                     },
-
-                   child: Container(
-                     height: 45,
-                     width: 250,
-                     decoration: BoxDecoration(color: primaryColor,borderRadius: BorderRadius.circular(14)),
-
-                     child: Center(child: AppText(text: "Create Event",color: Colors.white,)),
-                   ),
-                 ),
+                        uploadTask.then((res) async {
+                          imageurl = (await ref.getDownloadURL()).toString();
+                        }).then((value) {
+                          FirebaseFirestore.instance
+                              .collection('events')
+                              .doc(_addid)
+                              .set({
+                            'addid': _addid,
+                            'title': titleController.text,
+                            'description': descriptionController.text,
+                            'imgurl': imageurl,
+                            'agentid': widget.id,
+                            'agentname': widget.name,
+                            'status': 1,
+                            'createdAt': DateTime.now(),
+                            'delstatus': 0,
+                          }).then((value) {
+                            Navigator.pop(context);
+                          });
+                        });
+                      }
+                    },
+                    child: Container(
+                      height: 45,
+                      width: 250,
+                      decoration: BoxDecoration(
+                          color: secondaryColor,
+                          borderRadius: BorderRadius.circular(14)),
+                      child: Center(
+                          child: AppText(
+                            size: 16,
+                        text: "Create Event",
+                        color: Colors.white,
+                      )),
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -308,7 +253,7 @@ class _CreateEventState extends State<CreateEvent> {
   showimage() {
     showModalBottomSheet(
         shape:
-        RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
         backgroundColor: Colors.white,
         context: context,
         builder: (context) {

@@ -79,7 +79,7 @@ class _AssignAgentState extends State<AssignAgent> {
                     hintText: 'Ward'),
               ),
               SizedBox(
-                height: 20,
+                height: 30,
               ),
 
               Container(

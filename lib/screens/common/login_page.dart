@@ -186,10 +186,11 @@ class _LoginPageState extends State<LoginPage> {
                     children: [
                       Text(
                         "Not a member?",
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(color: Colors.black,
+                        fontSize: 15,),
                       ),
                       SizedBox(
-                        width: 10,
+                        width: 5,
                       ),
                       InkWell(
                           onTap: () {
@@ -201,7 +202,8 @@ class _LoginPageState extends State<LoginPage> {
                           child: Text(
                             "Regiser",
                             style: TextStyle(
-                                color: Colors.white,
+                                color: Colors.blue,
+                                fontSize: 18,
                                 fontWeight: FontWeight.bold),
                           )),
                     ],

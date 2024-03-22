@@ -2,6 +2,7 @@ import 'package:hk_sena/firebase_options.dart';
 import 'package:hk_sena/screens/common/login_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:hk_sena/screens/common/splashscreen.dart';
 
 void main()async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
 
 
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+      home: Splashscreen(),
       routes: {
         '/login': (context) => LoginPage(),
       },

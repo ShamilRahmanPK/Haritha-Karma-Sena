@@ -35,7 +35,7 @@ class _CarterHomeState extends State<CarterHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(appBar: AppBar(
-      backgroundColor: Color(0xff557153),
+      backgroundColor: Color(0xff006937),
       leading: IconButton(onPressed: () {
         Navigator.pushNamedAndRemoveUntil(
             context, "/login", (Route<dynamic> route) => false);
@@ -51,7 +51,11 @@ class _CarterHomeState extends State<CarterHome> {
                 crossAxisAlignment: CrossAxisAlignment.center,
 
                 children: [
-                  Text("You are assigned to  "+widget.ward),
+                  Text("You are assigned to: ${widget.ward}",style:
+                    TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500
+                    ),),
                   SizedBox(height: 30,),
                   Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -61,14 +65,13 @@ class _CarterHomeState extends State<CarterHome> {
                          Navigator.push(context, MaterialPageRoute(builder: (context)=>ViewAllRequests_carter(
                            ward: widget.ward,
                            id: widget.id,
-
                            name: widget.name,
                          )));
                         },
                           child: Container(
                             height: 100,
                             width: 130,
-                              color: Color(0xff557153),
+                              color: Color(0xff006937),
                             child: Center(
                               child: AppText(
 

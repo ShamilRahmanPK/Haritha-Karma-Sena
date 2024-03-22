@@ -169,8 +169,7 @@ var complaintid;
                   showsnackbar("Choose a Complaint");
               },
               style: ElevatedButton.styleFrom(
-                minimumSize: Size(200, 50),
-                primary: Colors.black
+                minimumSize: Size(200, 50), backgroundColor: Colors.black
               ),
               child: Text("Post",style: TextStyle(fontSize: 18),))
         ],

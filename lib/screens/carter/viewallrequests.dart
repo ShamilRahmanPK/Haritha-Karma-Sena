@@ -31,7 +31,7 @@ class _ViewAllRequests_carterState extends State<ViewAllRequests_carter> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Requests"),
-        backgroundColor: Color(0xff557153),
+        backgroundColor: Color(0xff006937),
       ),
       body: Container(
         padding: EdgeInsets.only(left: 20, right: 20, top: 20),
@@ -44,7 +44,9 @@ class _ViewAllRequests_carterState extends State<ViewAllRequests_carter> {
             print(snapshot);
             if(snapshot.hasData && snapshot.data!.docs.length==0){
               return Center(
-                child: Text("No Open Requests"),
+                child: Text("No Open Requests",style: TextStyle(
+                    fontSize: 15,
+                ),),
               );
             }
             if (snapshot.hasData) {
@@ -69,14 +71,10 @@ class _ViewAllRequests_carterState extends State<ViewAllRequests_carter> {
                                 ? IconButton(
                                     onPressed: () {
 
-
                                       showDialog<String>(
-
 
                                         context: context,
                                           builder: (
-
-
                                               BuildContext
                                           context) =>
                                           AlertDialog(
@@ -119,8 +117,6 @@ class _ViewAllRequests_carterState extends State<ViewAllRequests_carter> {
                                                 }).then((value) => Navigator.pop(context));
                                               }, child: Text("Update"))
                                             ],
-                                            // title: const Text(
-                                            //     'aaaaaaaa'),
                                             content: Container(
                                               height: 100,
                                               child: Column(
@@ -152,9 +148,6 @@ class _ViewAllRequests_carterState extends State<ViewAllRequests_carter> {
                                               ),
                                             ),
                                           ),
-
-
-
                                       );
 
                                     },
@@ -163,7 +156,6 @@ class _ViewAllRequests_carterState extends State<ViewAllRequests_carter> {
                                       size: 32,
                                     ))
                                 : SizedBox(),
-                            // snapshot.data!.docs[index]['status']==0?Text(snapshot.data!.docs[index]['reply'],style: TextStyle(color: Colors.green),):SizedBox.shrink()
                           ],
                         ),
                         trailing: snapshot.data!.docs[index]['pickupstatus'] != 0
@@ -174,8 +166,6 @@ class _ViewAllRequests_carterState extends State<ViewAllRequests_carter> {
                     );
                   });
             }
-
-
 
             if (!snapshot.hasData) {
               return Center(

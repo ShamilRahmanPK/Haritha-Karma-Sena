@@ -24,7 +24,7 @@ class _AdminComplaintHomeState extends State<AdminComplaintHome> {
         child: Scaffold(
           appBar: AppBar(
             title: Text("Complaints"),
-            backgroundColor: Colors.teal,
+            backgroundColor: Color(0xff006937),
             bottom: TabBar(
               indicatorColor: Colors.white,
               tabs: [ Text("General Complaints"),Text("Service Complaints"),],

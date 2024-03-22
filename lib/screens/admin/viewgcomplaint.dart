@@ -15,7 +15,7 @@ class _ViewgcomplaintState extends State<Viewgcomplaint> {
     return Scaffold(
       appBar: AppBar(
         title: Text("general complaints"),
-        backgroundColor: Colors.teal,
+        backgroundColor: Color(0xff006937),
       ),
       body: SafeArea(
           child: Container(

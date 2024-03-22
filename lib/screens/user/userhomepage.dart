@@ -148,7 +148,7 @@ class _UserHomepageState extends State<UserHomepage> {
             "assets/images/logo1.png",
             height: 50,
           ),
-          ],
+        ],
       ),
       body: Container(
         padding: EdgeInsets.all(20),
@@ -185,10 +185,12 @@ class _UserHomepageState extends State<UserHomepage> {
                                 fontWeight: FontWeight.w500),
                             children: <TextSpan>[
                               TextSpan(
-                                  text: widget.name.toString().toUpperCase(),
+                                  text: widget.name.toString().split(' ')[1].toUpperCase(),
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 22)),
+                                      fontSize: 22
+                                  )
+                              )
                             ],
                           ),
                         ),
@@ -198,14 +200,14 @@ class _UserHomepageState extends State<UserHomepage> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => UserProfile(
-                                      imgurl: widget.imgurl,
-                                      uid: widget.uid,
-                                      name: widget.name,
-                                      email: widget.email,
-                                      hno: widget.hno,
-                                      phone: widget.phone,
-                                      wardno: widget.wardno,
-                                    )));
+                                          imgurl: widget.imgurl,
+                                          uid: widget.uid,
+                                          name: widget.name,
+                                          email: widget.email,
+                                          hno: widget.hno,
+                                          phone: widget.phone,
+                                          wardno: widget.wardno,
+                                        )));
                           },
                           child: Container(
                             height: 80,
@@ -214,15 +216,15 @@ class _UserHomepageState extends State<UserHomepage> {
                             child: widget.imgurl == ""
                                 ? Image.asset('assets/images/prof.png')
                                 : Container(
-                              height: 80,
-                              width: 80,
-                              decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  image: DecorationImage(
-                                      image: NetworkImage(
-                                          widget.imgurl.toString()),
-                                      fit: BoxFit.cover)),
-                            ),
+                                    height: 80,
+                                    width: 80,
+                                    decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        image: DecorationImage(
+                                            image: NetworkImage(
+                                                widget.imgurl.toString()),
+                                            fit: BoxFit.cover)),
+                                  ),
                           ),
                         )
                       ],
@@ -249,20 +251,28 @@ class _UserHomepageState extends State<UserHomepage> {
                         height: 130,
                         width: MediaQuery.of(context).size.width,
                         decoration: BoxDecoration(
-                            color: Color(0xff006937),
+                          color: Color(0xff006937),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: SingleChildScrollView(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              SizedBox(height: 15,),
+                              SizedBox(
+                                height: 15,
+                              ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  Text("Balance:",style: TextStyle(fontSize: 18,color: Colors.white),),
-                                  SizedBox(width: 8,),
+                                  Text(
+                                    "Balance:",
+                                    style: TextStyle(
+                                        fontSize: 18, color: Colors.white),
+                                  ),
+                                  SizedBox(
+                                    width: 8,
+                                  ),
                                   Center(
                                     child: Container(
                                       width:
@@ -291,9 +301,11 @@ class _UserHomepageState extends State<UserHomepage> {
                                                       .data!.docs[0]['amount']
                                                       .toString(),
                                                   style: TextStyle(
-                                                      color: Colors.lightBlueAccent,
+                                                      color: Colors
+                                                          .lightBlueAccent,
                                                       fontSize: 30,
-                                                  fontWeight: FontWeight.w500),
+                                                      fontWeight:
+                                                          FontWeight.w500),
                                                 ),
                                                 walletbalance <= 50
                                                     ? Expanded(
@@ -305,7 +317,7 @@ class _UserHomepageState extends State<UserHomepage> {
                                                                     context) =>
                                                                 AlertDialog(
                                                               title: const Text(
-                                                                  'Please Recharge'),
+                                                                  'Enter amount'),
                                                               content:
                                                                   Container(
                                                                 height: 50,
@@ -334,7 +346,6 @@ class _UserHomepageState extends State<UserHomepage> {
                                                                       'Cancel'),
                                                                 ),
                                                                 TextButton(
-                                                                  //helo
                                                                   onPressed:
                                                                       () {
                                                                     Navigator.push(
@@ -441,7 +452,7 @@ class _UserHomepageState extends State<UserHomepage> {
                                                                                           }
                                                                                         },
                                                                                         style: ElevatedButton.styleFrom(
-                                                                                          primary: Colors.lightGreen.shade900,
+                                                                                          backgroundColor: Colors.lightGreen.shade900,
                                                                                         ),
                                                                                         child: Text(
                                                                                           "Send Request",
@@ -499,7 +510,10 @@ class _UserHomepageState extends State<UserHomepage> {
                   ),
                   Text(
                     "Your Recent Disposals",
-                    style: TextStyle(color: Colors.black, fontSize: 18,fontWeight: FontWeight.w500),
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500),
                   ),
                   SizedBox(
                     height: 10,
@@ -676,27 +690,6 @@ class _UserHomepageState extends State<UserHomepage> {
                                 itemBuilder: (_, index) {
                                   return InkWell(
                                     onTap: () {
-                                      // Navigator.push(
-                                      //   context,
-                                      //   PageRouteBuilder(
-                                      //       pageBuilder: (_, __, ___) => StoreDetailsPageAdmin(
-                                      //         storeid:stores[index]['name'],
-                                      //       ),
-                                      //       transitionDuration: Duration(milliseconds: 400),
-                                      //       transitionsBuilder:
-                                      //           (context, animation, anotherAnimation, child) {
-                                      //         animation = CurvedAnimation(
-                                      //             curve: Curves.easeIn, parent: animation);
-                                      //         return Align(
-                                      //             child: SlideTransition(
-                                      //               position: Tween(
-                                      //                   begin: Offset(1.0, 0.0),
-                                      //                   end: Offset(0.0, 0.0))
-                                      //                   .animate(animation),
-                                      //               child: child,
-                                      //             ));
-                                      //       }),
-                                      // );
                                     },
                                     child: Card(
                                       color: primaryColor,
@@ -762,17 +755,6 @@ class _UserHomepageState extends State<UserHomepage> {
                                                             color: Colors.white,
                                                           ),
                                                         ),
-
-                                                        // Container(
-                                                        //     height: 40,
-                                                        //     width: MediaQuery.of(context).size.width - 160,
-                                                        //     child: Row(
-                                                        //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                        //       children: [
-                                                        //         stores[index]['status']==1?      AppText(data: "Verified",textSize: 16,fw: FontWeight.w700,txtColor: Colors.green,):AppText(data: "Not Verified",textSize: 16,fw: FontWeight.w700,txtColor: Colors.red,),
-                                                        //         stores[index]['status']==1?    IconButton(onPressed: (){}, icon: Icon(Icons.offline_pin,color: Colors.green,)):IconButton(onPressed: (){}, icon: Icon(Icons.dangerous,color: Colors.red,))
-                                                        //       ],
-                                                        //     )),
                                                       ],
                                                     )),
                                               ),

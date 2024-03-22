@@ -15,7 +15,7 @@ class _CarterViewState extends State<CarterView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: primaryColor,
+        backgroundColor: Color(0xff006937),
         title: Text("Carters"),
       ),
       body: SafeArea(

@@ -37,7 +37,7 @@ class _UserProfileState extends State<UserProfile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xff557153),
+        backgroundColor: Color(0xff006937),
         title: _status == false ? Text("Profile Page") : Text("Edit Profile"),
       ),
       body: _status == false
@@ -110,7 +110,8 @@ class _UserProfileState extends State<UserProfile> {
                                 children: [
                                   AppText(
                                     text: snapshot.data!.docs[0]['name'].toString().toUpperCase(),
-                                    size: 18,
+                                    size: 20,
+                                    fw: FontWeight.w500,
                                   ),
                                   SizedBox(
                                     height: 10,
@@ -348,12 +349,6 @@ class _EdiProfileState extends State<EdiProfile> {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  // CircleAvatar(
-                                  //   radius: 45.0,
-                                  //   backgroundImage: NetworkImage(widget.imgurl),
-                                  //   backgroundColor: Colors.transparent,
-                                  // ),
-
                                   Icon(
                                     Icons.upload_file,
                                     size: 40,
